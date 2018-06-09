@@ -12,12 +12,8 @@ export function formatDate(date, fmt) {
 	for (let k in o) {
 		if (new RegExp(`(${k})`).test(fmt)) {
 			let str = o[k] + '';
-			fmt = fmt.replace(RegExp.$1, (RegExp.$1.length === 1) ? str : padLeftZero(str));
+			fmt = fmt.replace(RegExp.$1, (RegExp.$1.length === 1) ? str : str.padStart(2, 0));
 		}
 	}
 	return fmt;
 };
-
-function padLeftZero(str) {
-	return ('00' + str).substr(str.length);
-}

@@ -38,20 +38,16 @@
               <star :size="48" :score="seller.score"></star>
             </div>
             <div class="title">
-              <div class="line"></div>
               <div class="text">优惠信息</div>
-              <div class="line"></div>
             </div>
             <ul v-if="seller.supports" class="supports">
-              <li class="support-item" v-for="(item,index) in seller.supports">
+              <li class="support-item" v-for="(item,index) in seller.supports" :key='index'>
                 <span class="icon" :class="classMap[seller.supports[index].type]"></span>
                 <span class="text">{{seller.supports[index].description}}</span>
               </li>
             </ul>
             <div class="title">
-              <div class="line"></div>
               <div class="text">商家公告</div>
-              <div class="line"></div>
             </div>
             <div class="bulletin">
               <p class="content">{{seller.bulletin}}</p>
@@ -249,7 +245,8 @@
             display: flex
             width: 80%
             margin: 28px auto 24px auto
-            .line
+            &:after, &:before
+              content: ''
               flex: 1
               position: relative
               top: -6px
